@@ -12,49 +12,33 @@ This project was created using Next.js App Router and styled with TailwindCSS + 
 ✔ Core Text Analysis
 
 Word Count
-
 Character Count (with spaces)
-
 Character Count (without spaces)
-
 Sentence Count
-
 Paragraph Count
-
 Most Frequent Word
-
 Longest Word
-
 Average Word Length
-
 Estimated Reading Time
 
 ✔ User Interface
 
 Clean, minimal, responsive design
-
 Two-panel layout (input + stats)
-
 Multiline scrollable input area
-
 Real-time analysis updates as the user types
 
 ✔ Performance
 
 Efficient O(n) text analysis
-
 Handles large inputs smoothly
-
 Analysis extracted into a reusable hook: useTextAnalysis.ts
 
 ✔ Code Quality
 
 Component-based architecture
-
 Organized folder structure (components, lib, types)
-
 Typed with TypeScript
-
 Comments and clear logic
 
 📂 Project Structure
@@ -105,23 +89,19 @@ Comments and clear logic
 🛠 Getting Started
 
 Install dependencies:
-
 npm install
 or
 yarn install
 
 Run the development server:
-
 npm run dev
 or
 yarn dev
 
-
 Then open:
-
 👉 http://localhost:3000
-
 The app will auto-reload on file changes.
+
 
 📘 How It Works (Approach)
 🔍 1. Text Analysis Logic
@@ -130,49 +110,34 @@ All calculations are done inside:
 
 src/lib/useTextAnalysis.ts
 
-
 This hook:
 
 Receives the raw text
-
 Normalizes casing
-
 Removes punctuation where necessary
-
 Performs all analytics in a single pass where possible
-
 Returns an object consumed by UI components
-
 This separation keeps the UI clean and improves testability.
 
 🎨 2. UI + Responsiveness
 
 Built with React Server Components (Next.js App Router)
-
 Layout is fully responsive using Tailwind’s grid and flex utilities
-
 Input automatically scrolls on overflow
-
 Stats are displayed in reusable StatCard components
 
 ⚡ 3. Performance Considerations
 
 No expensive nested loops
-
 No heavy regex
-
 All operations are O(n)
-
 Designed to handle large pasted text (articles, essays, reports)
+
 
 ⭐ Optional Features Planned (Not Implemented)
 
-PDF/CSV Export
-
 Sentiment Analysis
-
 Docker Deployment
-
 Unit Tests
 
 (These were optional for the challenge.)
@@ -184,9 +149,6 @@ npm start
 🖥 Deployment
 
 You can deploy this project easily on:
-
 Vercel (recommended for Next.js)
-
 Netlify
-
 Docker
