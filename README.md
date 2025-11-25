@@ -135,8 +135,6 @@ Sentiment Analysis
 Docker Deployment
 Unit Tests
 
-(These were optional for the challenge.)
-
 📦 Building for Production
 npm run build
 npm start
