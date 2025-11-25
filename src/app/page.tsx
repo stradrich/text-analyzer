@@ -9,77 +9,79 @@ import TextAnalysisHeader from "@/components/text-analysis-header"
 // import "@/lib/pdf-worker"; 
 
 export default function Home() {
-  // const [text, setText] = useState("")
+  const [text, setText] = useState("")
 
-  // const analysis = useMemo(() => {
-  //   if (!text.trim()) {
-  //     return {
-  //       wordCount: 0,
-  //       charCount: 0,
-  //       charCountNoSpaces: 0,
-  //       sentenceCount: 0,
-  //       paragraphCount: 0,
-  //       mostFrequentWord: "",
-  //       longestWord: "",
-  //       averageWordLength: 0,
-  //       readingTimeMinutes: 0,
-  //     }
-  //   }
+  console.log(text);
+  
+  const analysis = useMemo(() => {
+    if (!text.trim()) {
+      return {
+        wordCount: 0,
+        charCount: 0,
+        charCountNoSpaces: 0,
+        sentenceCount: 0,
+        paragraphCount: 0,
+        mostFrequentWord: "",
+        longestWord: "",
+        averageWordLength: 0,
+        readingTimeMinutes: 0,
+      }
+    }
 
-  //   // Word count
-  //   const words = text
-  //     .trim()
-  //     .split(/\s+/)
-  //     .filter((word) => word.length > 0)
-  //   const wordCount = words.length
+    // Word count
+    // const words = text
+    //   .trim()
+    //   .split(/\s+/)
+    //   .filter((word) => word.length > 0)
+    // const wordCount = words.length
 
-  //   // Character counts
-  //   const charCount = text.length
-  //   const charCountNoSpaces = text.replace(/\s/g, "").length
+    // Character counts
+    // const charCount = text.length
+    // const charCountNoSpaces = text.replace(/\s/g, "").length
 
-  //   // Sentence count
-  //   const sentenceCount = text.split(/[.!?]+/).filter((sentence) => sentence.trim().length > 0).length
+    // Sentence count
+    // const sentenceCount = text.split(/[.!?]+/).filter((sentence) => sentence.trim().length > 0).length
 
-  //   // Paragraph count
-  //   const paragraphCount = text.split(/\n\n+/).filter((para) => para.trim().length > 0).length
+    // Paragraph count
+    // const paragraphCount = text.split(/\n\n+/).filter((para) => para.trim().length > 0).length
 
-  //   // Most frequent word
-  //   const wordFrequency: Record<string, number> = {}
-  //   words.forEach((word) => {
-  //     const cleanWord = word.toLowerCase().replace(/[^\w]/g, "")
-  //     if (cleanWord.length > 0) {
-  //       wordFrequency[cleanWord] = (wordFrequency[cleanWord] || 0) + 1
-  //     }
-  //   })
+    // Most frequent word
+    // const wordFrequency: Record<string, number> = {}
+    // words.forEach((word) => {
+    //   const cleanWord = word.toLowerCase().replace(/[^\w]/g, "")
+    //   if (cleanWord.length > 0) {
+    //     wordFrequency[cleanWord] = (wordFrequency[cleanWord] || 0) + 1
+    //   }
+    // })
 
-  //   const mostFrequentWord = Object.entries(wordFrequency).sort(([, a], [, b]) => b - a)[0]?.[0] || ""
+    // const mostFrequentWord = Object.entries(wordFrequency).sort(([, a], [, b]) => b - a)[0]?.[0] || ""
 
-  //   // Longest word
-  //   const longestWord = words.reduce((longest, current) => {
-  //     const cleanCurrent = current.replace(/[^\w]/g, "")
-  //     const cleanLongest = longest.replace(/[^\w]/g, "")
-  //     return cleanCurrent.length > cleanLongest.length ? current : longest
-  //   }, "")
+    // Longest word
+    // const longestWord = words.reduce((longest, current) => {
+    //   const cleanCurrent = current.replace(/[^\w]/g, "")
+    //   const cleanLongest = longest.replace(/[^\w]/g, "")
+    //   return cleanCurrent.length > cleanLongest.length ? current : longest
+    // }, "")
 
-  //   // Average word length
-  //   const averageWordLength =
-  //     wordCount > 0 ? Math.round((words.reduce((sum, word) => sum + word.length, 0) / wordCount) * 100) / 100 : 0
+    // Average word length
+    // const averageWordLength =
+    //   wordCount > 0 ? Math.round((words.reduce((sum, word) => sum + word.length, 0) / wordCount) * 100) / 100 : 0
 
-  //   // Reading time (average 200 words per minute)
-  //   const readingTimeMinutes = Math.ceil(wordCount / 200)
+    // Reading time (average 200 words per minute)
+    // const readingTimeMinutes = Math.ceil(wordCount / 200)
 
-  //   return {
-  //     wordCount,
-  //     charCount,
-  //     charCountNoSpaces,
-  //     sentenceCount,
-  //     paragraphCount,
-  //     mostFrequentWord,
-  //     longestWord,
-  //     averageWordLength,
-  //     readingTimeMinutes,
-  //   }
-  // }, [text])
+    return {
+      // wordCount,
+      // charCount,
+      // charCountNoSpaces,
+      // sentenceCount,
+      // paragraphCount,
+      // mostFrequentWord,
+      // longestWord,
+      // averageWordLength,
+      // readingTimeMinutes,
+    }
+  }, [text])
 
   // const exportCSV = () => {
   // const rows = Object.entries(analysis)
@@ -202,8 +204,8 @@ return (
                 </span>
 
                 <Textarea
-                  // value={text}
-                  // onChange={(e) => setText(e.target.value)}
+                  value={text}
+                  onChange={(e) => setText(e.target.value)}
                   placeholder="Start typing or paste your text here to analyze it..."
                   className="min-h-60  resize-none rounded-lg border border-border/30 bg-background/50 p-4 font-mono text-sm placeholder:text-foreground/40 focus:border-primary/50 focus:bg-background"
                 />
@@ -212,24 +214,24 @@ return (
               {/* FOOTER OF CARD, STAYS AT BOTTOM */}
               <div className="mt-auto flex items-center justify-between pt-4">
                 <p className="text-xs text-foreground/60">
-                  {/* {text.length} characters •{" "}
+                  {text.length} characters •{" "}
                   {
                     text
                       .trim()
                       .split(/\s+/)
                       .filter((w) => w.length > 0).length
-                  }{" "} */}
+                  }{" "}
                   words
                 </p>
 
-                {/* {text.length > 0 && ( */}
+                {text.length > 0 && (
                   <button
-                    // onClick={() => setText("")}
+                    onClick={() => setText("")}
                     className="rounded-md bg-destructive/10 px-3 py-1.5 text-sm font-medium text-destructive hover:bg-destructive/20 transition-colors"
                   >
                     Clear
                   </button>
-                {/* )} */}
+                )} 
               </div>
 
             </div>
