@@ -37,13 +37,13 @@ export default function Home() {
 
     // Character counts
     const charCount = text.length
-    // const charCountNoSpaces = text.replace(/\s/g, "").length
+    const charCountNoSpaces = text.replace(/\s/g, "").length
 
     // Sentence count
-    // const sentenceCount = text.split(/[.!?]+/).filter((sentence) => sentence.trim().length > 0).length
+    const sentenceCount = text.split(/[.!?]+/).filter((sentence) => sentence.trim().length > 0).length
 
     // Paragraph count
-    // const paragraphCount = text.split(/\n\n+/).filter((para) => para.trim().length > 0).length
+    const paragraphCount = text.split(/\n\n+/).filter((para) => para.trim().length > 0).length
 
     // Most frequent word
     // const wordFrequency: Record<string, number> = {}
@@ -73,9 +73,9 @@ export default function Home() {
     return {
       wordCount,
       charCount,
-      // charCountNoSpaces,
-      // sentenceCount,
-      // paragraphCount,
+      charCountNoSpaces,
+      sentenceCount,
+      paragraphCount,
       // mostFrequentWord,
       // longestWord,
       // averageWordLength,
@@ -206,7 +206,7 @@ return (
                   value={text}
                   onChange={(e) => setText(e.target.value)}
                   placeholder="Start typing or paste your text here to analyze it..."
-                  className="min-h-60  resize-none rounded-lg border border-border/30 bg-background/50 p-4 font-mono text-sm placeholder:text-foreground/40 focus:border-primary/50 focus:bg-background"
+                  className="h-55 resize-none overflow-y-auto rounded-lg border border-border/30 bg-background/50 p-4 font-mono text-sm placeholder:text-foreground/40 focus:border-primary/50 focus:bg-background"
                 />
               </label>
 
