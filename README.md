@@ -56,12 +56,7 @@ Comments and clear logic
 ├── package.json
 ├── postcss.config.mjs
 ├── public/
-│   ├── file.svg
-│   ├── globe.svg
-│   ├── next.svg
 │   ├── pdf.worker.min.mjs
-│   ├── vercel.svg
-│   └── window.svg
 ├── src/
 │   ├── app/
 │   │   ├── favicon.ico
