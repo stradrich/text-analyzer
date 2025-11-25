@@ -9,7 +9,7 @@ interface AnalysisResult {
   mostFrequentWord: string
   longestWord: string
   averageWordLength: number
-  // readingTimeMinutes: number
+  readingTimeMinutes: number
 }
 
 interface Props {
@@ -47,11 +47,11 @@ export default function TextAnalysisStats({ analysis }: Props) {
           <div className="my-4 border-t border-border/20" />
 
           <StatCard label="Average Word Length" value={analysis.averageWordLength} subtext="characters per word" />
-          {/* <StatCard
+          <StatCard
             label="Reading Time"
             value={`${analysis.readingTimeMinutes} min`}
             subtext="at 200 words/minute"
-          /> */}
+          />
 
           <div className="my-4 border-t border-border/20" />
 
