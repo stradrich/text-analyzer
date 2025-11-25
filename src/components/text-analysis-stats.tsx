@@ -6,9 +6,9 @@ interface AnalysisResult {
   charCountNoSpaces: number
   sentenceCount: number
   paragraphCount: number
-  // mostFrequentWord: string
-  // longestWord: string
-  // averageWordLength: number
+  mostFrequentWord: string
+  longestWord: string
+  averageWordLength: number
   // readingTimeMinutes: number
 }
 
@@ -19,16 +19,16 @@ interface Props {
 const StatCard = ({
   label,
   value,
-  // subtext,
+  subtext,
 }: {
   label: string
   value: string | number
-  // subtext?: string
+  subtext?: string
 }) => (
   <div className="rounded-lg border border-border/30 bg-background/50 p-4 backdrop-blur-sm">
     <p className="mb-2 text-xs font-medium uppercase tracking-wide text-foreground/60">{label}</p>
     <p className="text-2xl font-bold text-primary">{value}</p>
-    {/* {subtext && <p className="mt-1 text-xs text-foreground/50">{subtext}</p>} */}
+    {subtext && <p className="mt-1 text-xs text-foreground/50">{subtext}</p>}
   </div>
 )
 
@@ -46,7 +46,7 @@ export default function TextAnalysisStats({ analysis }: Props) {
 
           <div className="my-4 border-t border-border/20" />
 
-          {/* <StatCard label="Average Word Length" value={analysis.averageWordLength} subtext="characters per word" /> */}
+          <StatCard label="Average Word Length" value={analysis.averageWordLength} subtext="characters per word" />
           {/* <StatCard
             label="Reading Time"
             value={`${analysis.readingTimeMinutes} min`}
@@ -61,7 +61,7 @@ export default function TextAnalysisStats({ analysis }: Props) {
                 Most Frequent Word
               </p>
               <p className="truncate rounded bg-primary/10 px-3 py-2 font-mono text-sm font-medium text-primary">
-                {/* {analysis.mostFrequentWord || "N/A"} */}
+                {analysis.mostFrequentWord || "N/A"}
               </p>
             </div>
 
@@ -70,7 +70,7 @@ export default function TextAnalysisStats({ analysis }: Props) {
                 Longest Word
               </p>
               <p className="truncate rounded px-3 py-2 font-mono text-sm font-medium">
-                {/* {analysis.longestWord || "N/A"} */}
+                {analysis.longestWord || "N/A"}
               </p>
             </div>
           </div>
