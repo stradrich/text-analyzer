@@ -1,7 +1,7 @@
 📝 Text Analyzer — React/Next.js Application
 
-https://github.com/user-attachments/assets/ffb2733f-f014-42d7-a530-8ebe68af15eb
-https://github.com/user-attachments/assets/be27e8d2-0e09-4125-b2b5-b22f7ea6bce4
+<video src="https://github.com/user-attachments/assets/ffb2733f-f014-42d7-a530-8ebe68af15eb" controls></video>
+<video src="https://github.com/user-attachments/assets/be27e8d2-0e09-4125-b2b5-b22f7ea6bce4" controls></video>
 
 A modern, responsive Text Analysis Tool built with React.js (Next.js) for the Offline Coding Challenge.
 It allows users to paste or type text and instantly see analysis such as word count, character count, sentence count, paragraphs, longest word, most frequent word, and more.
