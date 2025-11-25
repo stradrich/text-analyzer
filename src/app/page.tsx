@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
 import TextAnalysisStats from "@/components/text-analysis-stats"
 import TextAnalysisHeader from "@/components/text-analysis-header"
-// import jsPDF from "jspdf";
+import jsPDF from "jspdf";
 // import "@/lib/pdf-worker"; 
 
 export default function Home() {
@@ -83,36 +83,36 @@ export default function Home() {
     }
   }, [text])
 
-  // const exportCSV = () => {
-  // const rows = Object.entries(analysis)
-  //     .map(([key, value]) => `${key},${value}`)
-  //     .join("\n");
+  const exportCSV = () => {
+  const rows = Object.entries(analysis)
+      .map(([key, value]) => `${key},${value}`)
+      .join("\n");
 
-  //   const blob = new Blob([rows], { type: "text/csv" });
-  //   const url = URL.createObjectURL(blob);
-  //   const a = document.createElement("a");
-  //   a.href = url;
-  //   a.download = "text-analysis.csv";
-  //   a.click();
-  //   URL.revokeObjectURL(url);
-  // };
+    const blob = new Blob([rows], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "text-analysis.csv";
+    a.click();
+    URL.revokeObjectURL(url);
+  };
 
-  // const exportPDF = () => {
-  //   const doc = new jsPDF();
+  const exportPDF = () => {
+    const doc = new jsPDF();
 
-  //   doc.setFontSize(16);
-  //   doc.text("Text Analysis Report", 10, 20);
+    doc.setFontSize(16);
+    doc.text("Text Analysis Report", 10, 20);
 
-  //   doc.setFontSize(12);
-  //   let y = 40;
+    doc.setFontSize(12);
+    let y = 40;
 
-  //   Object.entries(analysis).forEach(([key, value]) => {
-  //     doc.text(`${key}: ${value}`, 10, y);
-  //     y += 10;
-  //   });
+    Object.entries(analysis).forEach(([key, value]) => {
+      doc.text(`${key}: ${value}`, 10, y);
+      y += 10;
+    });
 
-  //   doc.save("text-analysis.pdf");
-  // };
+    doc.save("text-analysis.pdf");
+  };
 
 //   const handleFileUpload = (file: File) => {
 //   const reader = new FileReader();
@@ -147,12 +147,12 @@ return (
       <div className="p-2">
         <div className="flex flex-wrap items-center gap-3 mb-6">
           <button 
-            //  onClick={exportCSV}
+             onClick={exportCSV}
             >
             Export CSV
           </button>
           <button 
-              // onClick={exportPDF}
+              onClick={exportPDF}
             >
             Export PDF</button>
 
