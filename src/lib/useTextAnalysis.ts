@@ -17,6 +17,7 @@ export function useTextAnalysis() {
         mostFrequentWord: "",
         longestWord: "",
         averageWordLength: 0,
+        readingTimeMinutes: 0,
       };
     }
 
@@ -39,6 +40,9 @@ export function useTextAnalysis() {
       const w = word.toLowerCase().replace(/[^\w]/g, "");
       if (w) wordFrequency[w] = (wordFrequency[w] || 0) + 1;
     });
+
+    // Reading time (average 200 words per minute)
+    const readingTimeMinutes = Math.ceil(wordCount / 200)
 
     const mostFrequentWord =
       Object.entries(wordFrequency).sort((a, b) => b[1] - a[1])[0]?.[0] || "";
@@ -66,6 +70,7 @@ export function useTextAnalysis() {
       mostFrequentWord,
       longestWord,
       averageWordLength,
+      readingTimeMinutes
     };
   }, [text]);
 
