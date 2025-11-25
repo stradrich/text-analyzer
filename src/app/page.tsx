@@ -1,65 +1,244 @@
-import Image from "next/image";
+"use client"
+
+import { useState, useMemo } from "react"
+import { Card } from "@/components/ui/card"
+import { Textarea } from "@/components/ui/textarea"
+import TextAnalysisStats from "@/components/text-analysis-stats"
+import TextAnalysisHeader from "@/components/text-analysis-header"
+// import jsPDF from "jspdf";
+// import "@/lib/pdf-worker"; 
 
 export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+  // const [text, setText] = useState("")
+
+  // const analysis = useMemo(() => {
+  //   if (!text.trim()) {
+  //     return {
+  //       wordCount: 0,
+  //       charCount: 0,
+  //       charCountNoSpaces: 0,
+  //       sentenceCount: 0,
+  //       paragraphCount: 0,
+  //       mostFrequentWord: "",
+  //       longestWord: "",
+  //       averageWordLength: 0,
+  //       readingTimeMinutes: 0,
+  //     }
+  //   }
+
+  //   // Word count
+  //   const words = text
+  //     .trim()
+  //     .split(/\s+/)
+  //     .filter((word) => word.length > 0)
+  //   const wordCount = words.length
+
+  //   // Character counts
+  //   const charCount = text.length
+  //   const charCountNoSpaces = text.replace(/\s/g, "").length
+
+  //   // Sentence count
+  //   const sentenceCount = text.split(/[.!?]+/).filter((sentence) => sentence.trim().length > 0).length
+
+  //   // Paragraph count
+  //   const paragraphCount = text.split(/\n\n+/).filter((para) => para.trim().length > 0).length
+
+  //   // Most frequent word
+  //   const wordFrequency: Record<string, number> = {}
+  //   words.forEach((word) => {
+  //     const cleanWord = word.toLowerCase().replace(/[^\w]/g, "")
+  //     if (cleanWord.length > 0) {
+  //       wordFrequency[cleanWord] = (wordFrequency[cleanWord] || 0) + 1
+  //     }
+  //   })
+
+  //   const mostFrequentWord = Object.entries(wordFrequency).sort(([, a], [, b]) => b - a)[0]?.[0] || ""
+
+  //   // Longest word
+  //   const longestWord = words.reduce((longest, current) => {
+  //     const cleanCurrent = current.replace(/[^\w]/g, "")
+  //     const cleanLongest = longest.replace(/[^\w]/g, "")
+  //     return cleanCurrent.length > cleanLongest.length ? current : longest
+  //   }, "")
+
+  //   // Average word length
+  //   const averageWordLength =
+  //     wordCount > 0 ? Math.round((words.reduce((sum, word) => sum + word.length, 0) / wordCount) * 100) / 100 : 0
+
+  //   // Reading time (average 200 words per minute)
+  //   const readingTimeMinutes = Math.ceil(wordCount / 200)
+
+  //   return {
+  //     wordCount,
+  //     charCount,
+  //     charCountNoSpaces,
+  //     sentenceCount,
+  //     paragraphCount,
+  //     mostFrequentWord,
+  //     longestWord,
+  //     averageWordLength,
+  //     readingTimeMinutes,
+  //   }
+  // }, [text])
+
+  // const exportCSV = () => {
+  // const rows = Object.entries(analysis)
+  //     .map(([key, value]) => `${key},${value}`)
+  //     .join("\n");
+
+  //   const blob = new Blob([rows], { type: "text/csv" });
+  //   const url = URL.createObjectURL(blob);
+  //   const a = document.createElement("a");
+  //   a.href = url;
+  //   a.download = "text-analysis.csv";
+  //   a.click();
+  //   URL.revokeObjectURL(url);
+  // };
+
+  // const exportPDF = () => {
+  //   const doc = new jsPDF();
+
+  //   doc.setFontSize(16);
+  //   doc.text("Text Analysis Report", 10, 20);
+
+  //   doc.setFontSize(12);
+  //   let y = 40;
+
+  //   Object.entries(analysis).forEach(([key, value]) => {
+  //     doc.text(`${key}: ${value}`, 10, y);
+  //     y += 10;
+  //   });
+
+  //   doc.save("text-analysis.pdf");
+  // };
+
+//   const handleFileUpload = (file: File) => {
+//   const reader = new FileReader();
+//   reader.onload = () => {
+//     setText(reader.result as string);
+//   };
+//   reader.readAsText(file);
+// };
+
+// const handlePdfUpload = async (file: File) => {
+//   const pdfjs = await import("pdfjs-dist/legacy/build/pdf");
+//   const arrayBuffer = await file.arrayBuffer();
+//   const pdf = await pdfjs.getDocument({ data: arrayBuffer }).promise;
+
+//   let fullText = "";
+//   for (let i = 1; i <= pdf.numPages; i++) {
+//     const page = await pdf.getPage(i);
+//     const content = await page.getTextContent();
+//     fullText += content.items.map((item: any) => item.str).join(" ");
+//     if (i < pdf.numPages) fullText += "\n\n";
+//   }
+
+//   setText(fullText);
+// };
+
+return (
+  <main className="min-h-0 bg-gradient-to-br from-background via-background to-background pb-12">
+    <div className="mx-auto px-10 py-8 md:py-10 max-w-6xl">
+      <TextAnalysisHeader />
+
+      {/* IMPORT + BUTTONS */}
+      <div className="p-2">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <button 
+            //  onClick={exportCSV}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+            Export CSV
+          </button>
+          <button 
+              // onClick={exportPDF}
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+            Export PDF</button>
+
+          <input
+            // type="file"
+            // accept=".txt,.csv,.pdf"
+            // onChange={async (e) => {
+            //   const file = e.target.files?.[0];
+            //   if (!file) return;
+
+            //   if (file.type === "text/plain" || file.name.endsWith(".csv")) {
+            //     handleFileUpload(file);
+            //   } else if (
+            //     file.type === "application/pdf" ||
+            //     file.name.endsWith(".pdf")
+            //   ) {
+            //     await handlePdfUpload(file);
+            //   }
+            // }}
+            className="hidden"
+            id="upload-file"
+          />
+
+          <label htmlFor="upload-file" className="button-ui-styles">
+            Import File
+          </label>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </div>
+
+      {/* MAIN GRID — SAME HEIGHT BOTH SIDES */}
+      <div className="grid gap-8 lg:grid-cols-3">
+
+        {/* LEFT SIDE */}
+        <div className="lg:col-span-1">
+          <div>
+            {/* <TextAnalysisStats analysis={analysis} /> */}
+              <TextAnalysisStats />
+          </div>
         </div>
-      </main>
+
+        {/* RIGHT SIDE */}
+        <div className="lg:col-span-2">
+          <Card className="border border-border/50 bg-card shadow-lg">
+            <div className="p-8 flex flex-col">
+
+              <label className="mb-4 block">
+                <span className="mb-2 block text-sm font-semibold text-foreground/80">
+                  Paste or type your text here
+                </span>
+
+                <Textarea
+                  // value={text}
+                  // onChange={(e) => setText(e.target.value)}
+                  placeholder="Start typing or paste your text here to analyze it..."
+                  className="min-h-60  resize-none rounded-lg border border-border/30 bg-background/50 p-4 font-mono text-sm placeholder:text-foreground/40 focus:border-primary/50 focus:bg-background"
+                />
+              </label>
+
+              {/* FOOTER OF CARD, STAYS AT BOTTOM */}
+              <div className="mt-auto flex items-center justify-between pt-4">
+                <p className="text-xs text-foreground/60">
+                  {/* {text.length} characters •{" "}
+                  {
+                    text
+                      .trim()
+                      .split(/\s+/)
+                      .filter((w) => w.length > 0).length
+                  }{" "} */}
+                  words
+                </p>
+
+                {/* {text.length > 0 && ( */}
+                  <button
+                    // onClick={() => setText("")}
+                    className="rounded-md bg-destructive/10 px-3 py-1.5 text-sm font-medium text-destructive hover:bg-destructive/20 transition-colors"
+                  >
+                    Clear
+                  </button>
+                {/* )} */}
+              </div>
+
+            </div>
+          </Card>
+        </div>
+
+      </div>
     </div>
-  );
+  </main>
+);
+
 }
