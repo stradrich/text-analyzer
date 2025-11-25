@@ -46,26 +46,26 @@ export default function Home() {
     const paragraphCount = text.split(/\n\n+/).filter((para) => para.trim().length > 0).length
 
     // Most frequent word
-    // const wordFrequency: Record<string, number> = {}
-    // words.forEach((word) => {
-    //   const cleanWord = word.toLowerCase().replace(/[^\w]/g, "")
-    //   if (cleanWord.length > 0) {
-    //     wordFrequency[cleanWord] = (wordFrequency[cleanWord] || 0) + 1
-    //   }
-    // })
+    const wordFrequency: Record<string, number> = {}
+    words.forEach((word) => {
+      const cleanWord = word.toLowerCase().replace(/[^\w]/g, "")
+      if (cleanWord.length > 0) {
+        wordFrequency[cleanWord] = (wordFrequency[cleanWord] || 0) + 1
+      }
+    })
 
-    // const mostFrequentWord = Object.entries(wordFrequency).sort(([, a], [, b]) => b - a)[0]?.[0] || ""
+    const mostFrequentWord = Object.entries(wordFrequency).sort(([, a], [, b]) => b - a)[0]?.[0] || ""
 
     // Longest word
-    // const longestWord = words.reduce((longest, current) => {
-    //   const cleanCurrent = current.replace(/[^\w]/g, "")
-    //   const cleanLongest = longest.replace(/[^\w]/g, "")
-    //   return cleanCurrent.length > cleanLongest.length ? current : longest
-    // }, "")
+    const longestWord = words.reduce((longest, current) => {
+      const cleanCurrent = current.replace(/[^\w]/g, "")
+      const cleanLongest = longest.replace(/[^\w]/g, "")
+      return cleanCurrent.length > cleanLongest.length ? current : longest
+    }, "")
 
     // Average word length
-    // const averageWordLength =
-    //   wordCount > 0 ? Math.round((words.reduce((sum, word) => sum + word.length, 0) / wordCount) * 100) / 100 : 0
+    const averageWordLength =
+      wordCount > 0 ? Math.round((words.reduce((sum, word) => sum + word.length, 0) / wordCount) * 100) / 100 : 0
 
     // Reading time (average 200 words per minute)
     // const readingTimeMinutes = Math.ceil(wordCount / 200)
@@ -76,9 +76,9 @@ export default function Home() {
       charCountNoSpaces,
       sentenceCount,
       paragraphCount,
-      // mostFrequentWord,
-      // longestWord,
-      // averageWordLength,
+      mostFrequentWord,
+      longestWord,
+      averageWordLength,
       // readingTimeMinutes,
     }
   }, [text])
