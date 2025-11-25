@@ -1,10 +1,122 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+📝 Text Analyzer — React/Next.js Application
 
-## Getting Started
+https://github.com/user-attachments/assets/ffb2733f-f014-42d7-a530-8ebe68af15eb
+https://github.com/user-attachments/assets/be27e8d2-0e09-4125-b2b5-b22f7ea6bce4
 
-First, run the development server:
+A modern, responsive Text Analysis Tool built with React.js (Next.js) for the Offline Coding Challenge.
+It allows users to paste or type text and instantly see analysis such as word count, character count, sentence count, paragraphs, longest word, most frequent word, and more.
 
-```bash
+This project was created using Next.js App Router and styled with TailwindCSS + shadcn/ui.
+
+🚀 Features
+✔ Core Text Analysis
+
+Word Count
+
+Character Count (with spaces)
+
+Character Count (without spaces)
+
+Sentence Count
+
+Paragraph Count
+
+Most Frequent Word
+
+Longest Word
+
+Average Word Length
+
+Estimated Reading Time
+
+✔ User Interface
+
+Clean, minimal, responsive design
+
+Two-panel layout (input + stats)
+
+Multiline scrollable input area
+
+Real-time analysis updates as the user types
+
+✔ Performance
+
+Efficient O(n) text analysis
+
+Handles large inputs smoothly
+
+Analysis extracted into a reusable hook: useTextAnalysis.ts
+
+✔ Code Quality
+
+Component-based architecture
+
+Organized folder structure (components, lib, types)
+
+Typed with TypeScript
+
+Comments and clear logic
+
+📂 Project Structure
+
+/Users/xxx/Desktop/text-analyzer/
+├── .gitignore
+├─] .next/ (ignored)
+├── README.md
+├── components.json
+├── eslint.config.mjs
+├─] next-env.d.ts (ignored)
+├── next.config.ts
+├─] node_modules/ (ignored)
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── public/
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── next.svg
+│   ├── pdf.worker.min.mjs
+│   ├── vercel.svg
+│   └── window.svg
+├── src/
+│   ├── app/
+│   │   ├── favicon.ico
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── components/
+│   │   ├── text-analysis-header.tsx
+│   │   ├── text-analysis-stats.tsx
+│   │   └── ui/
+│   │       ├── button.tsx
+│   │       ├── card.tsx
+│   │       ├── input.tsx
+│   │       ├── separator.tsx
+│   │       └── textarea.tsx
+│   ├── lib/
+│   │   ├── pdf-worker.ts
+│   │   ├── useTextAnalysis.ts
+│   │   └── utils.ts
+│   └── types/
+│       └── pdfjs-worker.d.ts
+└── tsconfig.json
+
+
+🛠 Getting Started
+
+Install dependencies:
+
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+
+
+Run the development server:
+
 npm run dev
 # or
 yarn dev
@@ -12,25 +124,78 @@ yarn dev
 pnpm dev
 # or
 bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Then open:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+👉 http://localhost:3000
 
-## Learn More
+The app will auto-reload on file changes.
 
-To learn more about Next.js, take a look at the following resources:
+📘 How It Works (Approach)
+🔍 1. Text Analysis Logic
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All calculations are done inside:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+src/lib/useTextAnalysis.ts
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This hook:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Receives the raw text
+
+Normalizes casing
+
+Removes punctuation where necessary
+
+Performs all analytics in a single pass where possible
+
+Returns an object consumed by UI components
+
+This separation keeps the UI clean and improves testability.
+
+🎨 2. UI + Responsiveness
+
+Built with React Server Components (Next.js App Router)
+
+Layout is fully responsive using Tailwind’s grid and flex utilities
+
+Input automatically scrolls on overflow
+
+Stats are displayed in reusable StatCard components
+
+⚡ 3. Performance Considerations
+
+No expensive nested loops
+
+No heavy regex
+
+All operations are O(n)
+
+Designed to handle large pasted text (articles, essays, reports)
+
+⭐ Optional Features Planned (Not Implemented)
+
+PDF/CSV Export
+
+Sentiment Analysis
+
+Docker Deployment
+
+Unit Tests
+
+(These were optional for the challenge.)
+
+📦 Building for Production
+npm run build
+npm start
+
+🖥 Deployment
+
+You can deploy this project easily on:
+
+Vercel (recommended for Next.js)
+
+Netlify
+
+Docker
