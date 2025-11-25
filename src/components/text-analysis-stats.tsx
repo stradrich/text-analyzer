@@ -3,9 +3,9 @@ import { Card } from "@/components/ui/card"
 interface AnalysisResult {
   wordCount: number
   charCount: number
-  // charCountNoSpaces: number
-  // sentenceCount: number
-  // paragraphCount: number
+  charCountNoSpaces: number
+  sentenceCount: number
+  paragraphCount: number
   // mostFrequentWord: string
   // longestWord: string
   // averageWordLength: number
@@ -40,9 +40,9 @@ export default function TextAnalysisStats({ analysis }: Props) {
         <div className="space-y-3">
           <StatCard label="Words" value={analysis.wordCount} />
           <StatCard label="Characters" value={analysis.charCount} />
-          {/* <StatCard label="Characters (No Spaces)" value={analysis.charCountNoSpaces} /> */}
-          {/* <StatCard label="Sentences" value={analysis.sentenceCount} /> */}
-          {/* <StatCard label="Paragraphs" value={analysis.paragraphCount} /> */}
+          <StatCard label="Characters (No Spaces)" value={analysis.charCountNoSpaces} />
+          <StatCard label="Sentences" value={analysis.sentenceCount} />
+          <StatCard label="Paragraphs" value={analysis.paragraphCount} />
 
           <div className="my-4 border-t border-border/20" />
 
