@@ -29,14 +29,14 @@ export default function Home() {
     }
 
     // Word count
-    // const words = text
-    //   .trim()
-    //   .split(/\s+/)
-    //   .filter((word) => word.length > 0)
-    // const wordCount = words.length
+    const words = text
+      .trim()
+      .split(/\s+/)
+      .filter((word) => word.length > 0)
+    const wordCount = words.length
 
     // Character counts
-    // const charCount = text.length
+    const charCount = text.length
     // const charCountNoSpaces = text.replace(/\s/g, "").length
 
     // Sentence count
@@ -71,8 +71,8 @@ export default function Home() {
     // const readingTimeMinutes = Math.ceil(wordCount / 200)
 
     return {
-      // wordCount,
-      // charCount,
+      wordCount,
+      charCount,
       // charCountNoSpaces,
       // sentenceCount,
       // paragraphCount,
@@ -188,8 +188,7 @@ return (
         {/* LEFT SIDE */}
         <div className="lg:col-span-1">
           <div>
-            {/* <TextAnalysisStats analysis={analysis} /> */}
-              <TextAnalysisStats />
+            <TextAnalysisStats analysis={analysis} />
           </div>
         </div>
 
