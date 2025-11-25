@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea"
 import TextAnalysisStats from "@/components/text-analysis-stats"
 import TextAnalysisHeader from "@/components/text-analysis-header"
 import jsPDF from "jspdf";
-// import "@/lib/pdf-worker"; 
+import "@/lib/pdf-worker"; 
 
 export default function Home() {
   const [text, setText] = useState("")
@@ -114,29 +114,29 @@ export default function Home() {
     doc.save("text-analysis.pdf");
   };
 
-//   const handleFileUpload = (file: File) => {
-//   const reader = new FileReader();
-//   reader.onload = () => {
-//     setText(reader.result as string);
-//   };
-//   reader.readAsText(file);
-// };
+  const handleFileUpload = (file: File) => {
+  const reader = new FileReader();
+  reader.onload = () => {
+    setText(reader.result as string);
+  };
+  reader.readAsText(file);
+};
 
-// const handlePdfUpload = async (file: File) => {
-//   const pdfjs = await import("pdfjs-dist/legacy/build/pdf");
-//   const arrayBuffer = await file.arrayBuffer();
-//   const pdf = await pdfjs.getDocument({ data: arrayBuffer }).promise;
+const handlePdfUpload = async (file: File) => {
+  const pdfjs = await import("pdfjs-dist/legacy/build/pdf");
+  const arrayBuffer = await file.arrayBuffer();
+  const pdf = await pdfjs.getDocument({ data: arrayBuffer }).promise;
 
-//   let fullText = "";
-//   for (let i = 1; i <= pdf.numPages; i++) {
-//     const page = await pdf.getPage(i);
-//     const content = await page.getTextContent();
-//     fullText += content.items.map((item: any) => item.str).join(" ");
-//     if (i < pdf.numPages) fullText += "\n\n";
-//   }
+  let fullText = "";
+  for (let i = 1; i <= pdf.numPages; i++) {
+    const page = await pdf.getPage(i);
+    const content = await page.getTextContent();
+    fullText += content.items.map((item: any) => item.str).join(" ");
+    if (i < pdf.numPages) fullText += "\n\n";
+  }
 
-//   setText(fullText);
-// };
+  setText(fullText);
+};
 
 return (
   <main className="min-h-0 bg-gradient-to-br from-background via-background to-background pb-12">
@@ -157,21 +157,21 @@ return (
             Export PDF</button>
 
           <input
-            // type="file"
-            // accept=".txt,.csv,.pdf"
-            // onChange={async (e) => {
-            //   const file = e.target.files?.[0];
-            //   if (!file) return;
+            type="file"
+            accept=".txt,.csv,.pdf"
+            onChange={async (e) => {
+              const file = e.target.files?.[0];
+              if (!file) return;
 
-            //   if (file.type === "text/plain" || file.name.endsWith(".csv")) {
-            //     handleFileUpload(file);
-            //   } else if (
-            //     file.type === "application/pdf" ||
-            //     file.name.endsWith(".pdf")
-            //   ) {
-            //     await handlePdfUpload(file);
-            //   }
-            // }}
+              if (file.type === "text/plain" || file.name.endsWith(".csv")) {
+                handleFileUpload(file);
+              } else if (
+                file.type === "application/pdf" ||
+                file.name.endsWith(".pdf")
+              ) {
+                await handlePdfUpload(file);
+              }
+            }}
             className="hidden"
             id="upload-file"
           />
