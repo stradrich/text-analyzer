@@ -58,7 +58,7 @@ Typed with TypeScript
 Comments and clear logic
 
 📂 Project Structure
-
+```
 /Users/xxx/Desktop/text-analyzer/
 ├── .gitignore
 ├─] .next/ (ignored)
@@ -100,7 +100,7 @@ Comments and clear logic
 │   └── types/
 │       └── pdfjs-worker.d.ts
 └── tsconfig.json
-
+```
 
 🛠 Getting Started
 
